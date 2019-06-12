@@ -13,3 +13,22 @@ rune // alias for int32
 float32 float64
 
 complex64 complex128
+
+The zero value is:
+
+0 for numeric types,
+false for the boolean type, and
+"" (the empty string) for strings.
+
+
+Type casting:
+
+var i int = 42
+var f float64 = float64(i)
+var u uint = uint(f)
+
+
+
+i := 42
+f := float64(i)
+u := uint(f)
