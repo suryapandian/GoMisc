@@ -1,0 +1,2 @@
+1. Println and Sprintf difference?
+2. %v is for? what are such things called all % stuff?
