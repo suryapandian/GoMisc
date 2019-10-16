@@ -1,13 +1,7 @@
 package main
-
 import "strconv"
-import "fmt"
 
 type Clock struct{ h, m int }
-
-func main() {
-	New(0, 45).Add(40)
-}
 
 func New(hour, minute int) Clock {
 	i := Clock{hour, minute}
@@ -25,12 +19,13 @@ func (i Clock) String() (result string) {
 
 func (i Clock) Add(minutes int) Clock {
 	result := Clock{i.h, i.m + minutes}
-	fmt.Printf("Clock: %v, Clock Hour: %v, Clock Minute: %v \n", result, result.h, result.m)
+	result.correctTime()
 	return result
 }
 
 func (i Clock) Subtract(minutes int) Clock {
 	result := Clock{i.h, i.m - minutes}
+	result.correctTime()
 	return result
 }
 
