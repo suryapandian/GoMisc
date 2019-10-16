@@ -25,7 +25,7 @@ func (i Clock) String() (result string) {
 
 func (i Clock) Add(minutes int) Clock {
 	result := Clock{i.h, i.m + minutes}
-	fmt.Println("Add:", result.m, result, result.m)
+	fmt.Printf("Clock: %v, Clock Hour: %v, Clock Minute: %v \n", result, result.h, result.m)
 	return result
 }
 
