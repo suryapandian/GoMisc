@@ -25,15 +25,16 @@ func Build(records []Record) (*Node, error) {
 }
 
 func BuildTree(records []Record, ordered bool) (*Node, error) {
+	//Wrote this as a separate function to avoid isDisContinuous check for subtrees
 	if !ordered {
 		records = orderRecords(records)
 	}
 	if len(records) == 0 {
 		return nil, nil
 	}
-	var parentPresent bool
+	var parentPresent bool //To check if multiple parents are present
 	var result Node
-	tree := subTree(records)
+	tree := subTree(records) // To get subtrees of the element
 	for _, v := range records {
 		err := handleErrors(records, v, parentPresent)
 		if err != "" {
@@ -57,6 +58,7 @@ func BuildTree(records []Record, ordered bool) (*Node, error) {
 }
 
 func subTree(records []Record) map[int][]Record {
+	//Function to get all children for a node
 	tree := make(map[int][]Record)
 	for _, v := range records {
 		if v.ID != v.Parent {
@@ -73,6 +75,7 @@ func subTree(records []Record) map[int][]Record {
 }
 
 func contains(s []Record, e Record) bool {
+	// Function to detect duplicates
 	var counter int
 	for _, a := range s {
 		if a == e {
@@ -83,6 +86,7 @@ func contains(s []Record, e Record) bool {
 }
 
 func isDisContinuous(orderedRecords []Record) (result bool) {
+	// Function to check if the Node.ID are continuous
 	var prev int
 	for _, a := range orderedRecords {
 		result = !((prev == a.ID) || ((prev + 1) == a.ID))
@@ -96,7 +100,7 @@ func isDisContinuous(orderedRecords []Record) (result bool) {
 
 func handleErrors(records []Record, v Record, parentPresent bool) string {
 	if contains(records, v) {
-		return "No Parent"
+		return "Duplicates"
 	}
 	if v.ID < v.Parent {
 		return "Greater than Parent"
@@ -107,6 +111,7 @@ func handleErrors(records []Record, v Record, parentPresent bool) string {
 	return ""
 }
 
+// Is it possible to make use of interface or something so that I could have one function instead of `orderRecords` and `orderChildren`
 func orderRecords(records []Record) []Record {
 	sort.Slice(records, func(i, j int) bool {
 		return records[i].ID < records[j].ID
