@@ -15,25 +15,23 @@ return [0, 1].
 
 func twoSum(nums []int, target int) []int {
     var results []int
+    m := make(map[int]int)
+
     for i, v := range nums {
-        expectedNum := target - v
-        if expectedNum < 0 {
-            expectedNum = expectedNum * (-1)
+        expectedNum := getOtherNumber(v,target)
+        m[v] = i+1
+        if m[expectedNum]!= 0{
+          return []int{i, m[expectedNum]-1}  
         }
-        indexOfExpectedNum := contains(nums, expectedNum)
-        if nums[i] + nums[indexOfExpectedNum] == target{
-            return []int{i, indexOfExpectedNum}
-        }
+       
     }
     return results
 }
 
-
-func contains(array []int, num int) int{
-   for i,v := range array {
-        if v == num {
-            return i
-        }
-  } 
-  return 0
+func getOtherNumber(num, target int) (result int){
+    result = target - num
+    if result < 0 {
+            result = result * (-1)
+    }
+    return
 }
