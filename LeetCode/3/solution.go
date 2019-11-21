@@ -3,16 +3,16 @@ import (
 	"strings"
 )
 
-func lengthOfLongestSubstring(s string) int {
+func lengthOfLongestSubstring(str string) int {
 	var temp, longestString string
-	for _, l := range s {
-		v := string(l)
-		if strings.ContainsAny(temp, v) {
-			i := strings.Index(temp, v)
-			temp = temp[i+1:] + v
+	for _, rune := range str {
+		character := string(rune)
+		if strings.ContainsAny(temp, character) {
+			i := strings.Index(temp, character)
+			temp = temp[i+1:] + character
 
 		} else {
-			temp = temp + v
+			temp = temp + character
 		}
 		if len(temp) > len(longestString) {
 			longestString = temp
@@ -25,3 +25,4 @@ func lengthOfLongestSubstring(s string) int {
 func main() {
 	lengthOfLongestSubstring("dvdf")
 }
+
