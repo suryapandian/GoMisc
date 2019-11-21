@@ -24,3 +24,16 @@ func main(){
     b := twoSum(a,6)
    fmt.Println(b)
 }
+/*
+The above program fails in this test case
+
+Input
+[3,2,4]
+6
+Output
+[0,0]
+Expected
+[1,2]
+
+*/
+
