@@ -4,17 +4,11 @@ import "fmt"
 
 func twoSum(nums []int, target int) []int {
     seen := make(map[int]int)
-
     for i, v := range nums {
-        requiredNumber := target - v
-        if requiredNumber < 0 {
-            requiredNumber *= -1
-        }
-
-        seen[v] = i
-        if j, ok := seen[requiredNumber]; ok  {
+        if j, ok := seen[target - v]; ok  {
             return []int{i, j}
         }
+        seen[v] = i
     }
     return nil
 }
