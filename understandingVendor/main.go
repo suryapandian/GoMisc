@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "github.com/peterhellberg/flip"
 
 func twoSum(nums []int, target int) []int {
     seen := make(map[int]int)
@@ -17,4 +18,6 @@ func main() {
     a := []int{3, 3}
     b := twoSum(a, 6)
     fmt.Println(b)
+    str := "Understanding vendor"
+    fmt.Println(flip.Table(str))
 }
