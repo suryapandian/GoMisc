@@ -3,21 +3,12 @@ package main
 import "fmt"
 
 func main() {
-	// var n int
-	// fmt.Println("Enter the number of elements in the array")
-	// fmt.Scanf("%d", &n)
-
-	// a := make([]int, n)
-	// for i := 0; i < n; i++ {
-	// 	fmt.Println("Enter the element in position", i)
-	// 	fmt.Scanf("%v", &a[i])
-	// }
-
 	a := [5]int{45, 5, 334, 9, 100}
-	n := 5
+	n := len(a)
 	var result int
 	for i := 0; i < n; i++ {
 		ra := rotate(a, i)
+		fmt.Println("after rotate", i, a)
 		numSwap := numOfSwap(ra)
 		fmt.Println("Number of swap", numSwap, ra)
 		if (i == 0) || (result > numSwap) {
@@ -43,16 +34,12 @@ func numOfSwap(a [5]int) (n int) {
 }
 
 func rotate(a [5]int, n int) [5]int {
-	for n >= 0 {
-		var tmp, tmp2 int
-		tmp = a[0]
-		for i := 1; i < len(a); i++ {
-			tmp2 = a[i]
-			a[i] = tmp
-			tmp = tmp2
+	if n > 0 {
+		b := a
+		for i := 0; i < len(a); i++ {
+			moveBy := (i + (n % len(a))) % len(a)
+			a[moveBy] = b[i]
 		}
-		a[0] = tmp
-		n--
 	}
 	return a
 
