@@ -2,20 +2,19 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func rotate(matrix [][]int) {
 	n := len(matrix[0])
 	compN := n - 1
-	for i := 0; i <= n/2; i++ {
-		fmt.Println(i)
-		for j := i; j < (compN - i); j++ {
-			temp := matrix[i][j]
-			matrix[i][j] = matrix[compN-j][i]
-			matrix[compN-j][i] = matrix[compN-i][compN-j]
-			matrix[compN-i][compN-j] = matrix[j][compN-i]
-			matrix[j][compN-i] = temp
+	for outer := 0; outer <= n/2; outer++ {
+		fmt.Println(outer)
+		for inner := outer; inner < (compN - outer); inner++ {
+			temp := matrix[outer][inner]
+			matrix[outer][inner] = matrix[compN-inner][outer]
+			matrix[compN-inner][outer] = matrix[compN-outer][compN-inner]
+			matrix[compN-outer][compN-inner] = matrix[inner][compN-outer]
+			matrix[inner][compN-outer] = temp
 		}
 	}
 }
