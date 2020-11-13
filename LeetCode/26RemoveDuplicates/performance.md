@@ -1,0 +1,2 @@
+Runtime: 16 ms, faster than 21.64% of Go online submissions for Remove Duplicates from Sorted Array.
+Memory Usage: 4.6 MB, less than 100.00% of Go online submissions for Remove Duplicates from Sorted Array.
