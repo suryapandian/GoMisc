@@ -121,5 +121,6 @@ func main() {
 	// that properly reads in the input for you
 	fmt.Println("Value of x in 4 + 2 = x is ", MissingDigit("4 + 2 = x"))
 	fmt.Println("Value of x in 4 + 2 = x is ", MissingDigit("1x0 * 12 = 1200"))
+	fmt.Println("Value of x in 12 /2 = x is ", MissingDigit("12 / 2 = x"))
 
 }
